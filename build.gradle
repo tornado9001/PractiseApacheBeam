@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'org.practise.apache.beam'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = uri("https://packages.confluent.io/maven/")
+    }
+}
+
+dependencies {
+
+    implementation group: 'org.apache.beam', name: 'beam-sdks-java-core', version: '2.45.0'
+    implementation group: 'org.apache.beam', name: 'beam-runners-direct-java', version: '2.45.0'
+
+    implementation group: 'org.apache.beam', name: 'beam-runners-google-cloud-dataflow-java', version: '2.45.0'
+    implementation group: 'org.apache.beam', name: 'beam-sdks-java-extensions-google-cloud-platform-core', version: '2.45.0'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.6'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-jdk14
+    testImplementation group: 'org.slf4j', name: 'slf4j-jdk14', version: '2.0.6'
+
+
+    // For the testing package
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
+}
+
+test {
+    useJUnitPlatform()
+}
